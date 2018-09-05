@@ -68,9 +68,12 @@ describe('Cinema', function () {
   });
   //EXTENSION
   it('should be able to filter films by year', function(){
-    const actual = cinema.findFilmsByProperty('year', 2017).length
-    const expected = 3;
-    assert.strictEqual(actual, expected);
+    trainspotting.year = 2017
+    dunkirk.year = 2016
+    cinema.films = [trainspotting, dunkirk];
+    const actual = cinema.findFilmsByProperty('year', 2017)
+    const expected = [trainspotting];
+    assert.deepStrictEqual(actual, expected);
   });
 
 });
